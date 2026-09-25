@@ -250,7 +250,7 @@ td .d{font-weight:500;font-size:14px}
   const iso = d => d.toISOString().slice(0,10);
 
   const defaults = {
-    s_name:"Webjoy", s_street:"Koggenland 270", s_zip:"1447 CS", s_city:"Purmerend", s_kvk:"", s_btw:"", s_iban:"NL87 RABO 0152 5798 77",
+    s_name:"Webjoy", s_street:"Koggenland 270", s_zip:"1447 CS", s_city:"Purmerend", s_kvk:"42147880", s_btw:"NL005534244B19", s_iban:"NL87 RABO 0152 5798 77",
     s_email:"jesse@webjoy.studio", s_web:"webjoy.studio", s_phone:"06 5528 7980", term:"14",
     c_name:"Voorbeeld B.V.", c_contact:"Sanne de Vries", c_street:"Keizersgracht 100", c_zip:"1015 AA", c_city:"Amsterdam", c_btw:"",
     number: today.getFullYear()+"-001", date: iso(today), ref:"Nieuwe website",
@@ -264,7 +264,7 @@ td .d{font-weight:500;font-size:14px}
   };
 
   let state;
-  try{ const raw = localStorage.getItem(STORE); state = raw ? Object.assign({}, defaults, JSON.parse(raw)) : structuredClone(defaults); }
+  try{ const raw = localStorage.getItem(STORE); state = raw ? Object.assign({}, defaults, JSON.parse(raw)) : structuredClone(defaults); for (const k in defaults) if (typeof defaults[k] === "string" && defaults[k] && state[k] === "") state[k] = defaults[k]; }
   catch(e){ state = structuredClone(defaults); }
   if(!Array.isArray(state.lines)) state.lines = structuredClone(defaults.lines);
 

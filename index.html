@@ -74,7 +74,7 @@ textarea{resize:vertical;min-height:64px}
 @media (max-width:1060px){.preview-wrap{position:static}}
 .scaler{width:794px;transform-origin:top left}
 /* the invoice itself: A4 at 96dpi */
-.invoice{width:794px;height:1123px;background:var(--bg-light);position:relative;overflow:hidden;padding:56px 64px 44px;border-radius:14px;box-shadow:var(--shadow-flyout);font-size:13px;line-height:1.5;color:var(--fg-light)}
+.invoice{--card-light:#FAF7F3;width:794px;height:1123px;background:#FFFFFF;position:relative;overflow:hidden;padding:56px 64px 44px;border-radius:14px;box-shadow:var(--shadow-flyout);font-size:13px;line-height:1.5;color:var(--fg-light)}
 .invoice.exporting{border-radius:0;box-shadow:none}
 .blob{position:absolute;pointer-events:none;user-select:none;z-index:0}
 .inv-body{position:relative;z-index:1;min-height:100%;display:flex;flex-direction:column;gap:26px;transform-origin:top center}
@@ -406,7 +406,7 @@ td .d{font-weight:500;font-size:14px}
     try{
       await document.fonts.ready;
       scaler.style.transform = "none"; inv.classList.add("exporting");
-      const canvas = await html2canvas(inv, {scale:2.5, backgroundColor:"#F3EFEA", useCORS:true, logging:false});
+      const canvas = await html2canvas(inv, {scale:2.5, backgroundColor:"#FFFFFF", useCORS:true, logging:false});
       const { jsPDF } = window.jspdf;
       const pdf = new jsPDF({unit:"mm", format:"a4", orientation:"portrait", compress:true});
       const pw = 210, ph_ = 297, imgH = canvas.height * pw / canvas.width;
